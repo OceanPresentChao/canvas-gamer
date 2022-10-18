@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-this-alias */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import type { Sprite } from './Sprite'
 type KeyEventCallback = (e: KeyboardEvent) => void
 export class Game {
@@ -60,19 +60,20 @@ export class Game {
       this.soundChannels.push(new Audio())
     this.keyListenerMap = new Map()
     this.HIGH_SCORE_PREFIX = `${this.name}_highscore`
+    this.animate = this.animate.bind(this)
+    this.imageLoadedCallback = this.imageLoadedCallback.bind(this)
+    this.imageLoadFailedCallback = this.imageLoadFailedCallback.bind(this)
   }
 
   start() {
-    const self = this
     this.startTime = Date.now()
-    requestAnimationFrame(self.animate)
+    requestAnimationFrame(this.animate)
   }
 
   animate(time: number) {
-    const self = this
     if (this.isPaused) {
       setTimeout(() => {
-        self.animate(time)
+        this.animate(time)
       }, this.PAUSE_TIMEOUT)
     }
     else {
@@ -85,7 +86,7 @@ export class Game {
       this.paintSprites()
       this.paintOverSprites()
       this.endAnimate()
-      requestAnimationFrame(self.animate)
+      requestAnimationFrame(this.animate)
     }
   }
 
@@ -183,14 +184,13 @@ export class Game {
   loadImage(url: string) {
     const image = new Image()
     image.src = url
-    const self = this
     image.addEventListener('load', (e) => {
       this.loadedImageCount++
-      self.imageLoadedCallback(e)
+      this.imageLoadedCallback(e)
     })
     image.addEventListener('error', (e) => {
       this.loadFailedImageCount++
-      self.imageLoadedCallback(e)
+      this.imageLoadedCallback(e)
     })
     this.imageMap.set(url, image)
   }
@@ -200,11 +200,11 @@ export class Game {
   }
 
   canPlayOggVorbis() {
-    return this.audio.canPlayType('audio/ogg;codecs="vorbis"') !== 'maybe'
+    return this.audio.canPlayType('audio/ogg;codecs="vorbis"') !== ''
   }
 
   canPlayMp4() {
-    return this.audio.canPlayType('audio/mp4') !== 'maybe'
+    return this.audio.canPlayType('audio/mp4') !== ''
   }
 
   getAvailableChannel() {
