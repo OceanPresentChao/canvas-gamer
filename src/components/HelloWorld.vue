@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Sprite } from '@/class/sprite'
+import { Sprite } from '@/core/Sprite'
 onMounted(() => {
   const canvas = document.getElementById('c') as HTMLCanvasElement
   const context = canvas.getContext('2d')
