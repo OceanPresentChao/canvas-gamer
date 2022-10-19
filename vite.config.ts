@@ -34,7 +34,7 @@ export default defineConfig({
   build: {
     lib: {
       entry: path.resolve(__dirname, 'src/index.ts'),
-      name: '[[name]]',
+      name: 'canvas-gamer',
       fileName: format => `peintre.${format}.js`,
     },
     rollupOptions: {

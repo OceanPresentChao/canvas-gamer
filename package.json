@@ -1,24 +1,24 @@
 {
-  "name": "starter-unplugin",
+  "name": "canvas-gamer",
   "version": "0.0.0",
   "author": "OceanPresent <oceanpresent@163.com>",
   "license": "MIT",
-  "homepage": "https://github.com/OceanPresentChao/[[name]]",
+  "homepage": "https://github.com/OceanPresentChao/canvas-gamer",
   "repository": {
     "type": "git",
-    "url": "https://github.com/OceanPresentChao/[[name]].git"
+    "url": "https://github.com/OceanPresentChao/canvas-gamer.git"
   },
   "keywords": [
     "oceanpresent"
   ],
   "exports": {
     ".": {
-      "require": "./dist/[[name]].umd.js",
-      "import": "./dist/[[name]].es.js"
+      "require": "./dist/canvas-gamer.umd.js",
+      "import": "./dist/canvas-gamer.es.js"
     }
   },
-  "main": "./dist/[[name]].umd.js",
-  "module": "./dist/[[name]].es.js",
+  "main": "./dist/canvas-gamer.umd.js",
+  "module": "./dist/canvas-gamer.es.js",
   "files": [
     "dist"
   ],
